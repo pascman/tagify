@@ -428,7 +428,6 @@ export default {
 
                 return true
             }
-
             switch( e.key ){
                 case 'Backspace' :
                     if( _s.mode == 'select' && _s.enforceWhitelist && this.value.length)
@@ -465,12 +464,12 @@ export default {
                     }
                     break
                 }
+                case ' ' :
                 case 'Tab' : {
                     let selectMode = _s.mode == 'select'
                     if(s && !selectMode) e.preventDefault()
                     else return true;
                 }
-
                 case 'Enter' :
                     // manual suggestion boxes are assumed to always be visible
                     if( this.state.dropdown.visible && _s.dropdown.position != 'manual' ) return
@@ -921,6 +920,7 @@ export default {
                     tagElm.parentNode.replaceChild(tagElm.__tagifyTagData.__originalHTML, tagElm)
                     this.state.editing = false;
                 }
+                case 'Space' :
                 case 'Enter' :
                 case 'Tab' :
                     e.preventDefault()

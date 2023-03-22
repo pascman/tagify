@@ -1,5 +1,5 @@
 /**
- * Tagify (v 4.17.7) - tags input component
+ * Tagify (v undefined) - tags input component
  * By undefined
  * https://github.com/yairEO/tagify
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -786,6 +786,7 @@ var _dropdown = {
             break;
           case 'ArrowRight':
             if (this.state.actions.ArrowLeft) return;
+          case 'Space':
           case 'Tab':
             {
               // in mix-mode, treat arrowRight like Enter key, so a tag will be created
@@ -1674,6 +1675,7 @@ var events = {
             }
             break;
           }
+        case ' ':
         case 'Tab':
           {
             let selectMode = _s.mode == 'select';
@@ -2078,6 +2080,7 @@ var events = {
             tagElm.parentNode.replaceChild(tagElm.__tagifyTagData.__originalHTML, tagElm);
             this.state.editing = false;
           }
+        case 'Space':
         case 'Enter':
         case 'Tab':
           e.preventDefault();

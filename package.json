@@ -24,7 +24,7 @@
     },
     "scripts": {
         "start": "gulp --dev",
-        "build": "gulp",
+        "build": "node node_modules/gulp/bin/gulp.js",
         "version": "gulp build && git add .",
         "prepublishOnly": "pkg-ok",
         "test": "echo \"No test specified\"",

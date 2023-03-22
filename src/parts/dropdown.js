@@ -425,6 +425,7 @@ export default {
                     case 'ArrowRight' :
                         if( this.state.actions.ArrowLeft )
                             return
+                    case 'Space' :
                     case 'Tab' : {
                         // in mix-mode, treat arrowRight like Enter key, so a tag will be created
                         if( this.settings.mode != 'mix' && selectedElm && !this.settings.autoComplete.rightKey && !this.state.editing ){

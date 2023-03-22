@@ -78,13 +78,13 @@ function react(done){
         .pipe( $.umd(umdConf) )
         .pipe(opts.dev ? $.tap(()=>{}) : $.terser())
         .pipe($.headerComment(banner))
-        .pipe( gulp.dest('./dist/') )
+        .pipe( gulp.dest('./dist') )
 }
 
 function js_minified(done){
     return rollup({
         entry: 'src/tagify.js',
-        outputName: 'tagify.min.js',
+        outputName: 'tagify.rsea.min.js',
         plugins: opts.dev ? [] : [terser()]
     })
         .on('end', done)
@@ -95,7 +95,7 @@ function js(done){
 
     return rollup({
         entry: 'src/tagify.js',
-        outputName: 'tagify.js'
+        outputName: 'tagify.rsea.js'
     })
         .on('end', done)
 }
@@ -105,7 +105,7 @@ function esm(done){
 
     return rollup({
         entry: 'src/tagify.js',
-        outputName: 'tagify.esm.js',
+        outputName: 'tagify.rsea.esm.js',
         format: 'es'
     })
         .on('end', done)
@@ -116,9 +116,9 @@ function jquery(){
     if( opts.dev )
         return Promise.resolve('"dev" does not compile jQuery')
 
-    return gulp.src('dist/tagify.min.js')
+    return gulp.src('dist/tagify.rsea.min.js')
         .pipe($.insert.wrap(jQueryPluginWrap[0], jQueryPluginWrap[1]))
-        .pipe($.rename('jQuery.tagify.min.js'))
+        .pipe($.rename('jQuery.tagify.rsea.min.js'))
         // .pipe($.terser())
         .pipe($.headerComment(banner))
         .pipe(gulp.dest('./dist/'))
@@ -132,7 +132,7 @@ function handleError(err) {
 function polyfills(done){
     return rollup({
         entry: 'src/tagify.polyfills.js',
-        outputName: 'tagify.polyfills.min.js'
+        outputName: 'tagify.polyfills.rsea.min.js'
     })
         .on('end', done)
 }
